@@ -4,10 +4,10 @@ import string,webbrowser
 with open("defualt.json") as defualt:
     defualtObj = json.load(defualt)
 letters = string.ascii_lowercase
-
+print("\nSupported Manga Site : manganelo.com\n")
 while True:
   
-  print("\nSupported Manga Site : manganelo.com\n")
+
   cmd = input("Select Commamd:")
   file_name = "list.json"
   if cmd == "add":
@@ -37,8 +37,11 @@ while True:
     chpNumber=copperA[copperB+1:]
     maindex=copperdex+copperB+1
     deltachp=copper[:maindex]+chpB
-    
-    print(deltachp)
+    listkey=list(datar.keys())[chpA]
+    print("Manga Opened In Your Browser")
+    datar[listkey] = deltachp
+    with open(file_name, "w") as file_rw:
+      json.dump(datar, file_rw)
     webbrowser.open(deltachp)
     
   if cmd == "help":
